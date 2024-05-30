@@ -18,20 +18,16 @@ class HelloWorld(AbstractLambda):
         # todo implement business logic
         method = event.get("requestContext").get("http").get("method")
         path = event.get("requestContext").get("http").get("path")
-        return {
-            "statusCode": 200,
-            "message": "Hello from Lambda"
-        }
 
-        # if method == "GET" and path == "/hello":
-        #     return json.dumps({
-        #             'statusCode': 200,
-        #             'message': 'Hello from Lambda'
-        #         })
-        # return {
-        #     "statusCode": 400,
-        #     "message": f"Bad request syntax or unsupported method. Request path: {path}. HTTP method: {method}"
-        # }
+        if method == "GET" and path == "/hello":
+            return json.dumps({
+                    'statusCode': 200,
+                    'message': 'Hello from Lambda'
+                })
+        return json.dumps({
+            "statusCode": 400,
+            "message": f"Bad request syntax or unsupported method. Request path: {path}. HTTP method: {method}"
+        })
         
 
 HANDLER = HelloWorld()
