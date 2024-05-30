@@ -1,6 +1,0 @@
-name: task02
-build_projects_mapping:
-  python: src
-lambdas:
-  hello_world:
-    runtime: python
